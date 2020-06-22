@@ -1,7 +1,7 @@
 <div class="d-flex p-3 {{ $loop->last ? '' : 'border-bottom border-dark' }}">
     <div>
         <a href="{{ $tweet->user->path() }}">
-            <img width="50" height="50" class="rounded-circle mr-4" src="{{ $tweet->user->avatar }}" alt="ALT">
+            <img width="50" height="50" class="rounded-circle mr-4" src="{{ $tweet->user->attrs->avatar }}" alt="ALT">
         </a>
         <div class="text-muted mt-3" style="font-size: 0.55rem">
             {{ $tweet->created_at->diffForHumans() }}

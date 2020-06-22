@@ -5,7 +5,8 @@
 
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter name" required value="{{ $user->name }}">
+            <input type="text" class="form-control" name="name" placeholder="Enter name" required
+                value="{{ $user->name }}">
             @error('name')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -13,7 +14,8 @@
 
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" placeholder="Username" required value="{{ $user->username }}">
+            <input type="text" class="form-control" name="username" placeholder="Username" required
+                value="{{ $user->username }}">
             @error('username')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -21,7 +23,8 @@
 
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" placeholder="Email" required value="{{ $user->email }}">
+            <input type="email" class="form-control" name="email" placeholder="Email" required
+                value="{{ $user->email }}">
             @error('email')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -36,6 +39,23 @@
         </div>
 
         <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" name="description" rows="5" placeholder="Description"
+                required>{{ $user->attrs->description }}</textarea>
+            @error('description')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="wallpaper">Wallpaper</label>
+            <input type="file" class="form-control-file" name="wallpaper" placeholder="Wallpaper">
+            @error('wallpaper')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" placeholder="Password">
             @error('password')
@@ -45,7 +65,8 @@
 
         <div class="form-group">
             <label for="password_confirmation">Password</label>
-            <input type="password" class="form-control" name="password_confirmation" placeholder="Password Confirmation">
+            <input type="password" class="form-control" name="password_confirmation"
+                placeholder="Password Confirmation">
             @error('password_confirmation')
             <p class="text-danger">{{ $message }}</p>
             @enderror

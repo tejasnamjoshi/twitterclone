@@ -42,15 +42,9 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
-    public function getAvatarAttribute($value)
-    {
-        return asset($value ?: 'avatars/default_avatar.jpg');
-    }
-
     public function timeline()
     {
         $friends = $this->follows()->pluck('id');
-        // $friends->push($this->id);
         return Tweet::whereIn('user_id', $friends)
             ->orWhere(['user_id' => $this->id])
             ->withLikes()
@@ -72,5 +66,10 @@ class User extends Authenticatable
     {
         $path = route('profile', $this->username);
         return $append ? "{$path}/{$append}" : $path;
+    }
+
+    public function attrs()
+    {
+        return $this->hasOne(UserAttribute::class);
     }
 }

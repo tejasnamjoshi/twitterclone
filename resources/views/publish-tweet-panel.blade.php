@@ -4,7 +4,7 @@
         <textarea class="form-control w-100" name="body" placeholder="What's happening?" required></textarea>
         <hr>
         <footer class="d-flex justify-content-between">
-            <img class="rounded-circle mr-4" width="50" height="50" src="{{ current_user()->avatar }}" alt="ALT">
+            <img class="rounded-circle mr-4" width="50" height="50" src="{{ current_user()->attrs->avatar }}" alt="ALT">
 
             <button class="btn btn-primary rounded-pill px-5" style="border: 1px transparent" type="submit">
                 Publish

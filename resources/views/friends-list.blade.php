@@ -6,7 +6,7 @@
     <li class="list-unstyled my-3">
         <a href="{{ $user->path() }}">
             <div class="d-flex align-items-center">
-                <img width="50" height="50" class="rounded-circle mr-4" src="{{ $user->avatar }}" alt="ALT">
+                <img width="50" height="50" class="rounded-circle mr-4" src="{{ $user->attrs->avatar }}" alt="ALT">
                 {{ $user->name }}
             </div>
         </a>
