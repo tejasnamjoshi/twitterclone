@@ -13,16 +13,23 @@ trait Likable
         return $this->hasMany(Like::class);
     }
 
-    public function like($user = null, $like = true)
+    public function like($user = null, $liked = true)
     {
-        $this->likes()->updateOrCreate(
-            [
-                'user_id' => $user ? $user->id : current_user()->id
-            ],
-            [
-                'liked' => $like
-            ]
-        );
+        $userId = $user ? $user->id : current_user()->id;
+        $shouldUpdate = $this->likes()->where(['user_id' => $userId, 'liked' => $liked])->get()->isEmpty();
+
+        if (!$shouldUpdate) {
+            $this->likes()->delete(['user_id' => $userId, 'liked' => null]);
+        } else {
+            $this->likes()->updateOrCreate(
+                [
+                    'user_id' => $user ? $user->id : current_user()->id
+                ],
+                [
+                    'liked' => $liked
+                ]
+            );
+        }
     }
 
     public function dislike($user = null)

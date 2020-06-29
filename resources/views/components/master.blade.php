@@ -24,7 +24,7 @@
 <body style="background-color: rgb(21, 32, 43); color: #fff" class="pb-5">
     <div id="app">
         <section class="p-4">
-            <header class="container-fluid mx-auto d-flex">
+            <header class="container-fluid mx-auto d-flex align-items-center justify-content-between">
                 <div class="d-flex ml-5">
                     <a href="{{ route('home') }}">
                         <img src="/images/logo.svg" width="60px" height="60px" alt="Twitter">
@@ -32,6 +32,14 @@
                     <h1 class="ml-5">
                         Tejas's Twitter
                     </h1>
+                </div>
+                <div>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button class="btn btn-danger border-0 mb-2">
+                            Logout
+                        </button>
+                    </form>
                 </div>
             </header>
         </section>

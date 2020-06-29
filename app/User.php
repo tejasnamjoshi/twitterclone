@@ -37,10 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
+    protected $with = ['attrs'];
 
     public function timeline()
     {
@@ -71,5 +68,20 @@ class User extends Authenticatable
     public function attrs()
     {
         return $this->hasOne(UserAttribute::class);
+    }
+
+    public function makeAdmin($isAdmin = true)
+    {
+        $this->attrs()->update(compact('isAdmin'));
+    }
+
+    public function removeAdmin()
+    {
+        $this->makeAdmin(false);
+    }
+
+    public function toggleAdmin()
+    {
+        $this->attrs->isAdmin ? $this->removeAdmin() : $this->makeAdmin();
     }
 }

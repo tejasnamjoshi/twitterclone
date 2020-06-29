@@ -39,6 +39,8 @@ class ProfilesController extends Controller
 
         if ($attributes['password'] === null) {
             unset($attributes['password']);
+        } else {
+            $attributes['password'] = bcrypt($attributes['password']);
         }
 
         $user->update($attributes);

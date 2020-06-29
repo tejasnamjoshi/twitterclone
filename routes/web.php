@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/tweets/{tweet}/like', 'TweetsController@like');
     Route::delete('/tweets/{tweet}/like', 'TweetsController@dislike');
+
+    Route::get('/admin-panel', 'AdminPanelController@index')->middleware('can:update,App\User');
+
+    Route::patch('/make-admin/{user:username}', 'AdminPanelController@edit')->middleware('can:update,App\User');
 });
 
 Route::get('/explore', 'ExploreController');

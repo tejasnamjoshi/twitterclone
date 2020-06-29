@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -13,7 +12,7 @@ class EditProfileRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(User $user)
+    public function rules()
     {
         $user = request('user');
         return [
