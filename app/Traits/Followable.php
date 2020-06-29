@@ -32,7 +32,11 @@ trait Followable
 
     public function following($user)
     {
-        // return $this->follows->contains($user);
         return $this->follows()->where('following_user_id', $user->id)->exists();
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'following_user_id', 'user_id');
     }
 }

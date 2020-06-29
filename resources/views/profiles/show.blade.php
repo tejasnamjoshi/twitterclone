@@ -31,9 +31,35 @@
             </div>
         </div>
 
-        <div class="ml-2" style="max-width: 300px">
-            <h4> <strong>{{ $user->name }}</strong> </h4>
-            <p class="text-muted">Joined {{ $user->created_at->diffForHumans() }}</p>
+        <div class="d-flex justify-content-between">
+            <div class="ml-2" style="max-width: 300px">
+                <h4> <strong>{{ $user->name }}</strong> </h4>
+                <p class="text-muted">Joined {{ $user->created_at->diffForHumans() }}</p>
+            </div>
+
+            <div class="d-flex">
+                <div class="mr-4">
+                    <h6 style="color: rgb(136, 153, 166);">
+                        Followed By
+                    </h6>
+                    <a href="/explore/{{ $user->username }}/followers">
+                        <h4 class="text-center">
+                            {{ $user->followers()->count() }}
+                        </h4>
+                    </a>
+                </div>
+
+                <div>
+                    <h6 style="color: rgb(136, 153, 166);">
+                        Following
+                    </h6>
+                    <a href="/explore/{{ $user->username }}/follows">
+                        <h4 class="text-center">
+                            {{ $user->follows()->count() }}
+                        </h4>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <p>
