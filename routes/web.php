@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/explore/{user:username}/followers', 'ExploreController@followers');
     Route::get('/explore/{user:username}/follows', 'ExploreController@follows');
+
+    Route::get('/profiles/{user:username}/block', 'ProfilesController@block');
 });
 
 Route::get('/explore', 'ExploreController');

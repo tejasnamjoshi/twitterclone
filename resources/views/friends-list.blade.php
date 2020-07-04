@@ -3,6 +3,7 @@
 <ul class="p-0">
     @forelse (current_user()->follows as $user)
 
+    @if (!current_user()->isBlocked($user))
     <li class="list-unstyled my-3">
         <a href="{{ $user->path() }}">
             <div class="d-flex align-items-center">
@@ -11,6 +12,7 @@
             </div>
         </a>
     </li>
+    @endif
 
     @empty
     <p>No Friends yet!!</p>

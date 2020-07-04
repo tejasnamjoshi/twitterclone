@@ -11,6 +11,10 @@
         <div class="d-flex flex-column mt-3">
             <div class="d-flex justify-content-end py-2">
                 <div class="px-2">
+                    <x-block-button :user="$user" />
+                </div>
+                @if (!current_user()->isBlocked($user))
+                <div class="px-2">
                     @can('edit', $user)
                     <a href="{{ $user->path('edit') }}">
                         <button class="btn btn-outline-secondary rounded-pill">
@@ -28,6 +32,7 @@
                 <div class="px-2">
                     <x-follow-button :user="$user" />
                 </div>
+                @endif
             </div>
         </div>
 
@@ -69,5 +74,11 @@
         </p>
     </header>
 
+    @if (current_user()->isBlocked($user))
+    <div class="text-center text-danger">
+        <h2>Blocked</h2>
+    </div>
+    @else
     @include('timeline', ['tweets' => $tweets])
+    @endif
 </x-app>

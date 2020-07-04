@@ -61,4 +61,10 @@ class ProfilesController extends Controller
 
         return redirect($user->path());
     }
+
+    public function block(User $user)
+    {
+        current_user()->toggleBlock($user);
+        return back();
+    }
 }

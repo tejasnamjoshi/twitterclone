@@ -33,6 +33,7 @@
                         Tejas's Twitter
                     </h1>
                 </div>
+                @auth
                 <div>
                     <form action="/logout" method="POST">
                         @csrf
@@ -41,6 +42,7 @@
                         </button>
                     </form>
                 </div>
+                @endauth
             </header>
         </section>
 
