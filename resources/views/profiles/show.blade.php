@@ -11,6 +11,13 @@
         <div class="d-flex flex-column mt-3">
             <div class="d-flex justify-content-end py-2">
                 <div class="px-2">
+                    <a href="/chat/{{ $user->username }}">
+                        <button class="btn btn-outline-primary rounded-pill">
+                            Chat
+                        </button>
+                    </a>
+                </div>
+                <div class="px-2">
                     <x-block-button :user="$user" />
                 </div>
                 @if (!current_user()->isBlocked($user))

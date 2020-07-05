@@ -40,6 +40,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/explore/{user:username}/follows', 'ExploreController@follows');
 
     Route::get('/profiles/{user:username}/block', 'ProfilesController@block');
+
+    Route::get('/chatlist', 'MessageController@index');
+
+    Route::get('/chat/{user:username}', 'MessageController@show');
+    Route::post('/chat/{user:username}', 'MessageController@store');
 });
 
 Route::get('/explore', 'ExploreController');
