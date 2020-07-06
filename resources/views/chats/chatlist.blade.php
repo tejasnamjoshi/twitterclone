@@ -9,7 +9,7 @@
                 </h2>
             </div>
         </a>
-        <p>{{ $chat['previewText'] }}</p>
+        <p>{{ $chat['messageText'] }}</p>
     </div>
 
     @empty

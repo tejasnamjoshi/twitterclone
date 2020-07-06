@@ -4,7 +4,6 @@ namespace App;
 
 use App\Traits\Followable;
 use App\Traits\Blockable;
-use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -125,42 +124,26 @@ class User extends Authenticatable
     }
 
     /*
-    TODO This is not complete yet.
-    To be done correctly later. */
+    TODO Refactor to make code efficient */
     public function chatlist()
     {
         $chatlist = [];
-        $fromIds = Message::where('to_user_id', $this->id)
-        ->select('from_user_id')
-        ->distinct()
-        ->get()
-        ->toArray();
+        $messages = Message::where('to_user_id', $this->id)
+        ->orWhere('from_user_id', $this->id)
+        ->latest()
+        ->get();
 
-        $toIds = Message::where('from_user_id', $this->id)
-        ->select('to_user_id')
-        ->distinct()
-        ->get()
-        ->toArray();
+        $messages->map(function ($message) use (&$chatlist) {
+            $id = $message->from_user_id === $this->id ? $message->to_user_id : $message->from_user_id;
 
-        $ids = array_merge($fromIds, $toIds);
-        $users = User::whereIn('id', $ids)->get();
-
-        $lastCreatedTs = Carbon::now();
-        $messages = [];
-        $users->map(function ($u) use (&$chatlist, &$lastCreatedTs, &$messages) {
-            $message = $u->messages(current_user())->last();
-            array_push($messages, $message);
-            $chat = [
-                'user' => $u,
-                'previewText' => $message->messageText,
-                'created_at' => $message->created_at
-            ];
-
-            $message->created_at->gte($lastCreatedTs) ? array_unshift($chatlist, $chat) : array_push($chatlist, $chat);
-
-            $lastCreatedTs = $message->created_at;
+            if (empty($chatlist[$id])) {
+                $chatlist[$id] = [
+                    'user' => User::find($id),
+                    'messageText' => $message->messageText
+                ];
+            }
         });
 
-        return $chatlist;
+        return array_values($chatlist);
     }
 }
