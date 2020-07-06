@@ -10,6 +10,7 @@
 
         <div class="d-flex flex-column mt-3">
             <div class="d-flex justify-content-end py-2">
+                @unless (current_user()->is($user))
                 <div class="px-2">
                     <a href="/chat/{{ $user->username }}">
                         <button class="btn btn-outline-primary rounded-pill">
@@ -17,6 +18,7 @@
                         </button>
                     </a>
                 </div>
+                @endunless
                 <div class="px-2">
                     <x-block-button :user="$user" />
                 </div>

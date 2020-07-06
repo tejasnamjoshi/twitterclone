@@ -73,6 +73,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
         $attr = new UserAttribute();
+        $attr->isAdmin = false;
         $user->attrs()->save($attr);
 
         return $user;

@@ -86,16 +86,6 @@ class User extends Authenticatable
         $this->attrs->isAdmin ? $this->removeAdmin() : $this->makeAdmin();
     }
 
-    public function sentMessages()
-    {
-        return $this->hasMany(Message::class, 'to_user_id');
-    }
-
-    public function receivedMessages()
-    {
-        return $this->hasMany(Message::class, 'from_user_id');
-    }
-
     public function messages(User $user)
     {
         $friendId = $user->id;
