@@ -13,6 +13,7 @@ Tutorial  - <a href="https://laracasts.com/series/laravel-6-from-scratch">Larave
   - Create a database - twitter.
 - Run composer install.
 - Run npm install
+- Run php artisan key:generate
 - Run migrations using - <b>php artisan migrate</b>
 - Open a browser and enter the <APP_URL> in the address bar. ( Make sure to add the <APP_URL> in your hosts file. )
 - You will see the homepage with Login and Register links.
