@@ -20,8 +20,10 @@ class UserSeeder extends Seeder
 
             for ($i = 0; $i < rand(2, 6); $i++) {
                 $toUser = User::find(rand(1, 10));
+                $tweet = factory(Tweet::class)->make();
 
-                $user->tweets()->save(factory(Tweet::class)->make());
+                $user->tweets()->save($tweet);
+                $tweet->like($user, rand(0, 1) === 1);
 
                 if ($toUser && $user->isNot($toUser)) {
                     $user->sendMessage($toUser, $faker->sentence);

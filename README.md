@@ -26,6 +26,4 @@ Tutorial  - <a href="https://laracasts.com/series/laravel-6-from-scratch">Larave
 - Default data per user (Random number)
   - 2 - 6 messages
   - 2 - 6 tweets
-  - 2 - 6 follows
-  - 2 - 6 tweet likes
-  - 2 - 6 tweet dislikes
+  - random follows, tweet likes, tweet dislikes
