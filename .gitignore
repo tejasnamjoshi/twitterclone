@@ -1,9 +1,11 @@
 /node_modules
 /public/hot
+/public/wallpapers
+/public/avatars
 /public/storage
 /storage/*.key
 /vendor
-.env.backup
+/.env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

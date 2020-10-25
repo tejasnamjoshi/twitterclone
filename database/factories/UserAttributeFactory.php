@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(UserAttribute::class, function (Faker $faker) {
     return [
-        'user_id' => factory(User::class),
-        'description' => $faker->paragraph
+        'description' => $faker->paragraph,
+        'isAdmin' => 0
     ];
 });
