@@ -18,6 +18,16 @@ Tutorial  - <a href="https://laracasts.com/series/laravel-6-from-scratch">Larave
 - Open a browser and enter the <APP_URL> in the address bar. ( Make sure to add the <APP_URL> in your hosts file. )
 - You will see the homepage with Login and Register links.
 
+## WSL2 without docker
+- Run the following command - <b>php artisan serve --host=0.0.0.1 --port=8000</b>. This will start the laravel development server.
+- Open your favourite browser on windows and navigate to http://localhost:8000.
+- If you follow this approach you will have to install MYSQL on wsl2.
+
+## Windows without docker
+- Run the following command - <b>php artisan serve</b>. This will start the laravel development server.
+- Open your favourite browser and navigate to http://localhost:8000.
+- If you follow this approach you will have to install MYSQL on windows.
+
 
 ## Seed Data
 - Run the following command to add seed data - <b>php artisan migrate:fresh --seed</b>.
