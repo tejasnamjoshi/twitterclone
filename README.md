@@ -20,11 +20,13 @@ Tutorial  - <a href="https://laracasts.com/series/laravel-6-from-scratch">Larave
 
 ## WSL2 without docker
 - Run the following command - <b>php artisan serve --host=0.0.0.1 --port=8000</b>. This will start the laravel development server.
+- You will also have to modify your .env file. Change DB_HOST to 127.0.0.1
 - Open your favourite browser on windows and navigate to http://localhost:8000.
 - If you follow this approach you will have to install MYSQL on wsl2.
 
 ## Windows without docker
 - Run the following command - <b>php artisan serve</b>. This will start the laravel development server.
+- You will also have to modify your .env file. Change DB_HOST to 127.0.0.1
 - Open your favourite browser and navigate to http://localhost:8000.
 - If you follow this approach you will have to install MYSQL on windows.
 
